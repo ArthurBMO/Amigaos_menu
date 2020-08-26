@@ -16,96 +16,100 @@ var salgados = [
   { nome: "Brigadeiro", preco: 15, qnt: 15 }
 ];
 
-while (escolha != 0) {
-  //tells the program what the user wants
-  escolha = parseInt(prompt("Digite 1 para comprar algo[..]\n4 para adicionar produtos.\nDigite 0 para cancelar."));
+function start(){
+    while (true) {
+      //tells the program what the user wants
+      escolha = parseInt(prompt("Digite 1 para comprar algo[..]\n4 para adicionar produtos.\nDigite 0 para cancelar."));
 
-  if (escolha == 1) {
-    //resets variables
-    salg = 0, recieved = 0, troco = 0, precoT = 0, nEscolha = 0, qntMain = 0, salgMain = 0, nEscolhaMain = 0, text = "";
-
-    //asks which produto the user wants
-    nEscolha = parseInt(prompt("Em número, qual produto desejas?\nDigite 0 para cancelar\n\n" + DumpCustomers()));
-    //exits the program
-    if (nEscolha == 0) {
-      break;
-    }
-    //safegard
-    while (nEscolha < 1 || nEscolha > salgados.length) {
-      nEscolha = parseInt(prompt("Lembre-se, deve ser um número entre " + 1 + " e " + salgados.length + "\n" + DumpCustomers()));
-    }
-    //to access the correct place of the vector
-    nEscolha = nEscolha - 1;
-
-    //checks if the product is available, prompts the user to input another product
-    if (salgados[nEscolha].qnt == 0) {
-      alert("Este produto infelizmente acabou, escolha outro");
-    }
-    //if it is available, enters else and calls function for buying
-    else {
-      Main();
-    }
-  }
-  //to edit products
-  if (escolha == 4) {
-    find = parseInt(prompt("Digite 0 para adicionar um novo produto\nDigite o número de algum produto\n" + DumpCustomers()));
-    //safegard
-    while (find < 0 || find > salgados.length) {
-      find = parseInt(prompt("Lembre-se, 0 para adicionar um novo produto\nDigite o número de algum produto\n" + DumpCustomers()));
-    }
-
-    if (find >= 1) {
-      //find -- for it to become our vector position
-      find--;
-      choice = parseInt(prompt("Você quer adicionar mais(1), subtrair(2) ou mudar o preço(3)?\nComo sempre, 0 para cancelar."));
-      switch (choice) {
-        //exits the program
-        case 0:
-          escolha = 0;
-          break;
-        //adds more products
-        case 1:
-          qnt = parseInt(prompt("Quantos produtos novos chegaram?"));
-          while (qnt <= 0) {
-            qnt = parseInt(prompt("Desculpe, o valor ha de ser positivo apenas."));
-          }
-          salgados[find].qnt += qnt;
-          break;
-        //subtracts products
-        case 2:
-          qnt = parseInt(prompt("Quantas quantidades desejas remover?"));
-          while (qnt > salgados[find].qnt || qnt < 0) {
-            qnt = parseInt(prompt("Desculpe, o valor ha de ser positivo e menor que a quantidade(" + find + ") do(a) " + salgados[find].name + "."));
-          }
-          salgados[find].qnt -= qnt;
-          break;
-        //fixes price
-        case 3:
-          choice = parseFloat(prompt("Qual o novo preço?"));
-          while (choice < 0) {
-            choice = parseFloat(prompt("Não existe preço vegativo, po. Coloque algo entre 0 e infinito."));
-          }
-          salgados[find].preco = choice;
-          break;
-        //in case the user tries to break everything
-        default:
-          while (choice != 3 || choice != 2 || choice != 1 || choice != 0) {
-            choice = parseInt(prompt("Número errado. Para adicionar(1), remover(2) ou mudar o preço(3).\nComo sempre, 0 para sair."));
-          }
-      }
-      //to add a new product to the list
-    } else if (find == 0) {
-      salgados.push({ nome: prompt("Insira o nome do produto."), preco: parseFloat(prompt("Insira o preço.")), qnt: parseInt(prompt("Insira a quantidade")) });
-      escolha = parseInt(prompt("Deseja adicionar outro produto? Se sim, insira '4'.\nSe não, deixe em branco.\nPara cancelar, insira'0'."));
-      //safegard
-      while (escolha < 0 || escolha > 4) {
-        escolha = parseInt(prompt("Quebre o programa n, macho.\n\nPara voltar ao início, deixe em branco.\nPara cancelar, insira'0'."));
-      }
       if (escolha == 0) {
+        escolha = "";
         break;
       }
+      
+      else if (escolha == 1) {
+        //resets variables
+        salg = 0, recieved = 0, troco = 0, precoT = 0, nEscolha = 0, qntMain = 0, salgMain = 0, nEscolhaMain = 0, text = "";
+
+        //asks which produto the user wants
+        nEscolha = parseInt(prompt("Em número, qual produto desejas?\nDigite 0 para cancelar\n\n" + DumpCustomers()));
+        //exits the program
+        if (nEscolha == 0) {
+            break;
+        }
+        //safegard
+        while (nEscolha < 1 || nEscolha > salgados.length) {
+          nEscolha = parseInt(prompt("Lembre-se, deve ser um número entre " + 1 + " e " + salgados.length + "\n" + DumpCustomers()));
+        }
+        //to access the correct place of the vector
+        nEscolha = nEscolha - 1;
+
+        //checks if the product is available, prompts the user to input another product
+        if (salgados[nEscolha].qnt == 0) {
+          alert("Este produto infelizmente acabou, escolha outro");
+        }
+        //if it is available, enters else and calls function for buying
+        else {
+          Main();
+        }
+      }
+      //to edit products
+      else if (escolha == 4) {
+        find = parseInt(prompt("Digite 0 para adicionar um novo produto\nDigite o número de algum produto\n" + DumpCustomers()));
+        //safegard
+        while (find < 0 || find > salgados.length) {
+          find = parseInt(prompt("Lembre-se, 0 para adicionar um novo produto\nDigite o número de algum produto\n" + DumpCustomers()));
+        }
+
+        if (find >= 1) {
+          //find -- for it to become our vector position
+          find--;
+          choice = parseInt(prompt("Você quer adicionar mais(1), subtrair(2) ou mudar o preço(3)?\nComo sempre, 0 para cancelar."));
+          switch (choice) {
+            //exits the program
+            case 0:
+              escolha = 0;
+              break;
+            //adds more products
+            case 1:
+              qnt = parseInt(prompt("Quantos produtos novos chegaram?"));
+              while (qnt <= 0) {
+                qnt = parseInt(prompt("Desculpe, o valor ha de ser positivo apenas."));
+              }
+              salgados[find].qnt += qnt;
+              break;
+            //subtracts products
+            case 2:
+              qnt = parseInt(prompt("Quantas quantidades desejas remover?"));
+              while (qnt > salgados[find].qnt || qnt < 0) {
+                qnt = parseInt(prompt("Desculpe, o valor ha de ser positivo e menor que a quantidade(" + find + ") do(a) " + salgados[find].name + "."));
+              }
+              salgados[find].qnt -= qnt;
+              break;
+            //fixes price
+            case 3:
+              choice = parseFloat(prompt("Qual o novo preço?"));
+              while (choice < 0) {
+                choice = parseFloat(prompt("Não existe preço vegativo, po. Coloque algo entre 0 e infinito."));
+              }
+              salgados[find].preco = choice;
+              break;
+            //in case the user tries to break everything
+            default:
+              while (choice != 3 || choice != 2 || choice != 1 || choice != 0) {
+                choice = parseInt(prompt("Número errado. Para adicionar(1), remover(2) ou mudar o preço(3).\nComo sempre, 0 para sair."));
+              }
+          }
+          //to add a new product to the list
+        } else if (find == 0) {
+          salgados.push({ nome: prompt("Insira o nome do produto."), preco: parseFloat(prompt("Insira o preço.")), qnt: parseInt(prompt("Insira a quantidade")) });
+          escolha = parseInt(prompt("Deseja adicionar outro produto? Se sim, insira '4'.\nSe não, deixe em branco.\nPara cancelar, insira'0'."));
+          //safegard
+          while (escolha < 0 || escolha > 4) {
+            escolha = parseInt(prompt("Quebre o programa n, macho.\n\nPara voltar ao início, deixe em branco.\nPara cancelar, insira'0'."));
+          }
+        }
+      }
     }
-  }
 }
 
 function Main() {
