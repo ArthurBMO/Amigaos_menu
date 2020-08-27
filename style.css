@@ -1,0 +1,31 @@
+*{
+    color:white;
+}
+body{
+    background-image: url(win95.jpg);
+    background-repeat:repeat;
+    background-attachment: fixed;
+}
+
+#amigao{
+    background-color: #00807F;
+    margin:25% 40% auto;
+    display: flex;
+    justify-content: center;
+    border: 2px solid floralwhite;
+}
+
+#press{
+    color:white;
+    text-transform: uppercase;
+}
+
+.btn{
+    margin: 4% 0% 4% 5%;
+    cursor:pointer;
+    font-weight: 500;
+    text-transform:uppercase;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    background-color: #dadad3;
+    color:black;
+}
