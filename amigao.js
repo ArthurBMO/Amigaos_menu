@@ -11,21 +11,21 @@
 var escolha, salg, qnt, recieved, troco, precoT = 0, nEscolha, yesNo, text = " ", qntMain, salgMain, nEscolhaMain, find, choice, resultMulti = 0, precoTmain = 0;
 
 var salgados = [
-  { nome: "Another World", preco: 30, qnt: 1 },
-  { nome: "Super Driver", preco: 30, qnt: 15 },
-  { nome: "Brigadeiro", preco: 15, qnt: 15 }
+  { nome: "Coxinha", preco: 1.5, qnt: 40 },
+  { nome: "Kalzone", preco: 7.5, qnt: 15 },
+  { nome: "Brigadeiro", preco: 2, qnt: 100 }
 ];
 
 function start(){
     while (true) {
       //tells the program what the user wants
-      escolha = parseInt(prompt("Digite 1 para comprar algo[..]\n4 para adicionar produtos.\nDigite 0 para cancelar."));
+      escolha = parseInt(prompt("Digite 0 para cancelar.\nDigite 1 para comprar algo[..]\nDigite 2 para adicionar produtos."));
 
       if (escolha == 0) {
         escolha = "";
         break;
       }
-      
+
       else if (escolha == 1) {
         //resets variables
         salg = 0, recieved = 0, troco = 0, precoT = 0, nEscolha = 0, qntMain = 0, salgMain = 0, nEscolhaMain = 0, text = "";
@@ -53,11 +53,16 @@ function start(){
         }
       }
       //to edit products
-      else if (escolha == 4) {
-        find = parseInt(prompt("Digite 0 para adicionar um novo produto\nDigite o número de algum produto\n" + DumpCustomers()));
+      else if (escolha == 2) {
+        find = parseInt(prompt("Digite 's' para voltar ao início\nDigite 0 para adicionar um novo produto\nDigite o número de algum produto\n" + DumpCustomers()));
         //safegard
         while (find < 0 || find > salgados.length) {
           find = parseInt(prompt("Lembre-se, 0 para adicionar um novo produto\nDigite o número de algum produto\n" + DumpCustomers()));
+        }
+
+        if(isNaN(find)){
+            start();
+            break;
         }
 
         if (find >= 1) {
