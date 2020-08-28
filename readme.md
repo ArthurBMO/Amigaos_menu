@@ -1,6 +1,6 @@
 # Restaurant-menu
 A test by my programming class
 
-https://arthurbmo.github.io/Amigaos_menu/
+https://arthurbmo.github.io/Restaurant-menu/
 
-![alt text](https://raw.githubusercontent.com/ArthurBMO/Amigaos_menu/master/example.png)
+![alt text](https://raw.githubusercontent.com/ArthurBMO/Restaurant-menu/master/example.png)
